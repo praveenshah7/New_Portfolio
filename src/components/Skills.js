@@ -34,7 +34,7 @@ function SkillBar({ name, color }) {
 export default function Skills() {
   return (
     <section id="skills" style={{ padding: '7rem 5rem', background: '#050507' }}>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '.5rem' }}>// 02</div>
+      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '.5rem' }}>{`// 02`}</div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3.5rem' }}>
         <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,4vw,3.5rem)', textTransform: 'uppercase', letterSpacing: '-1px' }}>Tech Stack</h2>
         <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
