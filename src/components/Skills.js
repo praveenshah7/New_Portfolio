@@ -9,14 +9,16 @@ const skillGroups = [
   { label: 'Tools & ML', items: ['Git / GitHub', 'TensorFlow', 'Pandas', 'VS Code', 'Streamlit'], color: '#06b6d4' },
 ];
 
-const pct = { 'React JS':88,'JavaScript':85,'Python':75,'Node JS':78,'MongoDB':72,'Tailwind CSS':90,'HTML5':92,'CSS3':88,'Git / GitHub':85,'TensorFlow':60,'Pandas':65,'VS Code':95,'Streamlit':60,'C / C++':65,'SQL':70,'Linux':68 };
+const pct = {'React JS':88,'JavaScript':85,'Python':75,'Node JS':78,'MongoDB':72,'Tailwind CSS':90,'HTML5':92,'CSS3':88,'Git / GitHub':85,'TensorFlow':60,'Pandas':65,'VS Code':95,'Streamlit':60,'C / C++':65,'SQL':70,'Linux':68};
 
 function SkillBar({ name, color }) {
   const [width, setWidth] = useState(0);
   const ref = useRef(null);
   const p = pct[name] || 70;
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setTimeout(() => setWidth(p), 200); obs.disconnect(); } }, { threshold: 0.5 });
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setTimeout(() => setWidth(p), 200); obs.disconnect(); }
+    }, { threshold: 0.5 });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, [p]);
@@ -37,7 +39,9 @@ export default function Skills() {
   return (
     <section id="skills" style={{ padding: '7rem 5rem', background: '#050507' }}>
       <ScrollReveal>
-        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '.5rem' }}>Section 02</div>
+        <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '.5rem' }}>
+          <span>Section 02</span>
+        </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3.5rem' }}>
           <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,4vw,3.5rem)', textTransform: 'uppercase', letterSpacing: '-1px' }}>Tech Stack</h2>
           <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
@@ -46,7 +50,8 @@ export default function Skills() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: '2rem' }}>
         {skillGroups.map((group, i) => (
           <ScrollReveal key={group.label} delay={i * 100}>
-            <div style={{ background: '#0d0d12', border: '1px solid rgba(255,255,255,0.07)', padding: '2rem', transition: 'border-color 0.2s' }}
+            <div
+              style={{ background: '#0d0d12', border: '1px solid rgba(255,255,255,0.07)', padding: '2rem', transition: 'border-color 0.2s' }}
               onMouseEnter={e => e.currentTarget.style.borderColor = group.color + '44'}
               onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'}
             >
