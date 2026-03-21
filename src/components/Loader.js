@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 const codeLines = [
   'import React from "react";',
   'const Praveen = () => {',
-  '  const skills = ["React", "Node"];',
-  '  const passion = "Building UI";',
+  '  const role = "Frontend Dev";',
+  '  const stack = ["React", "Node"];',
   '  return <Portfolio />;',
   '};',
   'export default Praveen;',
@@ -30,19 +30,13 @@ export default function Loader({ onDone }) {
   }, [onDone]);
 
   return (
-    <div style={{
-      position: 'fixed', inset: 0, background: '#050507', zIndex: 9999,
-      display: 'flex', flexDirection: 'column', alignItems: 'center',
-      justifyContent: 'center', padding: '1.5rem',
-      opacity: fadeOut ? 0 : 1, transition: 'opacity 0.5s ease',
-      pointerEvents: fadeOut ? 'none' : 'all',
-    }}>
+    <div style={{ position: 'fixed', inset: 0, background: '#050507', zIndex: 9999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', opacity: fadeOut ? 0 : 1, transition: 'opacity 0.5s ease', pointerEvents: fadeOut ? 'none' : 'all', boxSizing: 'border-box' }}>
+
       <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '1.4rem', letterSpacing: '4px', color: '#e8e8f0', marginBottom: '2rem', textTransform: 'uppercase' }}>
         PS<span style={{ color: '#00ff88' }}>.</span>
       </div>
 
-      <div style={{ width: '100%', maxWidth: '360px', background: '#0d0d12', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', overflow: 'hidden' }}>
-        {/* Header */}
+      <div style={{ width: '100%', maxWidth: '340px', background: '#0d0d12', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', overflow: 'hidden' }}>
         <div style={{ background: '#13131a', padding: '.6rem 1rem', display: 'flex', alignItems: 'center', gap: '.5rem', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
           {['#ff5f57','#febc2e','#28c840'].map(c => (
             <span key={c} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c, display: 'inline-block', flexShrink: 0 }} />
@@ -50,15 +44,11 @@ export default function Loader({ onDone }) {
           <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#6b6b80', marginLeft: '.5rem' }}>portfolio.js</span>
         </div>
 
-        {/* Code lines */}
-        <div style={{ padding: '1rem', fontFamily: "'Space Mono', monospace", fontSize: '.7rem', lineHeight: 1.9, minHeight: '160px', overflowX: 'hidden' }}>
+        <div style={{ padding: '1rem', fontFamily: "'Space Mono', monospace", fontSize: '.68rem', lineHeight: 1.9, minHeight: '160px', overflowX: 'hidden' }}>
           {lines.map((line, i) => (
-            <div key={i} style={{
-              color: line.startsWith('import') ? '#7c3aed' : line.startsWith('const') || line.includes('const') ? '#06b6d4' : line.includes('return') ? '#f59e0b' : line.startsWith('export') ? '#00ff88' : '#a0a0b8',
-              display: 'flex', gap: '.6rem', overflow: 'hidden',
-            }}>
-              <span style={{ color: '#3a3a4a', flexShrink: 0, userSelect: 'none' }}>{String(i + 1).padStart(2, '0')}</span>
-              <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{line}</span>
+            <div key={i} style={{ display: 'flex', gap: '.6rem', overflow: 'hidden' }}>
+              <span style={{ color: '#3a3a4a', flexShrink: 0, userSelect: 'none', minWidth: '18px' }}>{String(i + 1).padStart(2, '0')}</span>
+              <span style={{ color: line.startsWith('import') ? '#7c3aed' : line.includes('const') ? '#06b6d4' : line.includes('return') ? '#f59e0b' : line.startsWith('export') ? '#00ff88' : '#a0a0b8', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{line}</span>
             </div>
           ))}
           {lines.length < codeLines.length && (
@@ -67,8 +57,7 @@ export default function Loader({ onDone }) {
         </div>
       </div>
 
-      {/* Progress */}
-      <div style={{ width: '100%', maxWidth: '360px', marginTop: '1.5rem' }}>
+      <div style={{ width: '100%', maxWidth: '340px', marginTop: '1.5rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '.5rem' }}>
           <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#6b6b80', letterSpacing: '2px' }}>LOADING</span>
           <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#00ff88' }}>{progress}%</span>

@@ -18,7 +18,7 @@ export default function Hero() {
     const resize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
-      dots = Array.from({ length: 80 }, () => ({
+      dots = Array.from({ length: 60 }, () => ({
         x: Math.random() * canvas.width, y: Math.random() * canvas.height,
         r: Math.random() * 1.5 + 0.3, vx: (Math.random() - 0.5) * 0.4,
         vy: (Math.random() - 0.5) * 0.4, o: Math.random() * 0.5 + 0.1,
@@ -72,18 +72,18 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 5rem', position: 'relative', overflow: 'hidden' }}>
+    <section id="hero" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 5rem', position: 'relative', overflow: 'hidden', boxSizing: 'border-box', width: '100%' }}>
       <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }} />
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 65% 50%, rgba(0,255,136,0.06) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(124,58,237,0.05) 0%, transparent 50%)', zIndex: 1, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)', zIndex: 1, pointerEvents: 'none' }} />
 
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '1000px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontFamily: "'Space Mono', monospace", fontSize: '.72rem', letterSpacing: '4px', color: '#6b6b80', textTransform: 'uppercase', marginBottom: '1.5rem' }}>
-          <span style={{ width: '32px', height: '1px', background: '#00ff88', display: 'inline-block' }} />
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '900px', width: '100%' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', fontFamily: "'Space Mono', monospace", fontSize: '.7rem', letterSpacing: '3px', color: '#6b6b80', textTransform: 'uppercase', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+          <span style={{ width: '28px', height: '1px', background: '#00ff88', display: 'inline-block', flexShrink: 0 }} />
           Haldwani, Uttarakhand · India
         </div>
 
-        <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(2.8rem, 11vw, 9.5rem)', lineHeight: 0.88, letterSpacing: '-3px', textTransform: 'uppercase', position: 'relative' }}>
+        <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(2.5rem, 10vw, 9.5rem)', lineHeight: 0.9, letterSpacing: '-2px', textTransform: 'uppercase', position: 'relative', wordBreak: 'keep-all' }}>
           <span style={{ display: 'block', position: 'relative' }}>
             {glitch && (
               <>
@@ -104,37 +104,37 @@ export default function Hero() {
           </span>
         </h1>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '.8rem', marginTop: '1.8rem' }}>
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.75rem', color: '#00ff88' }}>$</span>
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(.85rem, 2vw, 1.3rem)', color: '#e8e8f0', fontWeight: 400 }}>{displayed}</span>
-          <span style={{ display: 'inline-block', width: '2px', height: '1.3em', background: '#00ff88', animation: 'blink 1s infinite', verticalAlign: 'middle' }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '.8rem', marginTop: '1.8rem', flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.75rem', color: '#00ff88', flexShrink: 0 }}>$</span>
+          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(.8rem, 2vw, 1.2rem)', color: '#e8e8f0' }}>{displayed}</span>
+          <span style={{ display: 'inline-block', width: '2px', height: '1.2em', background: '#00ff88', animation: 'blink 1s infinite', verticalAlign: 'middle', flexShrink: 0 }} />
         </div>
 
-        <p style={{ maxWidth: '460px', color: '#6b6b80', fontSize: '.95rem', lineHeight: 1.85, marginTop: '1.8rem' }}>
+        <p style={{ maxWidth: '460px', color: '#6b6b80', fontSize: 'clamp(.85rem, 2vw, .95rem)', lineHeight: 1.85, marginTop: '1.5rem' }}>
           I craft fast, responsive, and visually precise web experiences. MCA grad · 2+ years shipping production React apps · currently at Supplyvalid.
         </p>
 
-        <div className="hero-stats" style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.07)', flexWrap: 'wrap' }}>
+        <div className="hero-stats" style={{ display: 'flex', gap: '2rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.07)', flexWrap: 'wrap' }}>
           {[['2+', 'Years Exp'], ['3+', 'Projects'], ['8.0', 'CGPA'], ['2', 'Certs']].map(([num, label]) => (
-            <div key={label} style={{ minWidth: '55px' }}>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', color: '#00ff88', lineHeight: 1 }}>{num}</div>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', marginTop: '.3rem' }}>{label}</div>
+            <div key={label} style={{ minWidth: '50px' }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(1.4rem, 4vw, 2.2rem)', color: '#00ff88', lineHeight: 1 }}>{num}</div>
+              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.58rem', color: '#6b6b80', letterSpacing: '1.5px', textTransform: 'uppercase', marginTop: '.3rem' }}>{label}</div>
             </div>
           ))}
         </div>
 
         <div style={{ display: 'flex', gap: '1.2rem', marginTop: '2.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <MagneticBtn href="#projects" primary>View My Work ↗</MagneticBtn>
-          <a href="#contact" style={{ fontFamily: "'Space Mono', monospace", fontSize: '.7rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.14)', paddingBottom: '2px', transition: 'color 0.2s', textDecoration: 'none' }}
+          <a href="#contact" style={{ fontFamily: "'Space Mono', monospace", fontSize: '.68rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.14)', paddingBottom: '2px', transition: 'color 0.2s', textDecoration: 'none' }}
             onMouseEnter={e => e.currentTarget.style.color = '#00ff88'}
             onMouseLeave={e => e.currentTarget.style.color = '#6b6b80'}
           >Get In Touch</a>
         </div>
       </div>
 
-      <div style={{ position: 'absolute', bottom: '3rem', right: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.8rem', fontFamily: "'Space Mono', monospace", fontSize: '.62rem', letterSpacing: '3px', color: '#6b6b80', textTransform: 'uppercase', writingMode: 'vertical-rl', zIndex: 2 }}>
+      <div className="scroll-indicator" style={{ position: 'absolute', bottom: '3rem', right: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.8rem', fontFamily: "'Space Mono', monospace", fontSize: '.6rem', letterSpacing: '3px', color: '#6b6b80', textTransform: 'uppercase', writingMode: 'vertical-rl', zIndex: 2 }}>
         <span>Scroll</span>
-        <span style={{ width: '1px', height: '60px', background: 'linear-gradient(to bottom, #00ff88, transparent)', animation: 'scrollAnim 2s ease infinite', display: 'block' }} />
+        <span style={{ width: '1px', height: '50px', background: 'linear-gradient(to bottom, #00ff88, transparent)', animation: 'scrollAnim 2s ease infinite', display: 'block' }} />
       </div>
 
       <style>{`
@@ -146,9 +146,11 @@ export default function Hero() {
         @media(max-width:768px){
           #hero h1 { font-size: 3rem !important; letter-spacing: -1px !important; }
           .hero-stats { gap: 1.5rem !important; }
+          .scroll-indicator { display: none !important; }
         }
         @media(max-width:400px){
           #hero h1 { font-size: 2.5rem !important; }
+          #hero { padding: 5rem 1rem 3rem !important; }
         }
       `}</style>
     </section>
@@ -167,7 +169,7 @@ function MagneticBtn({ href, children, primary }) {
   const handleLeave = () => { if (ref.current) ref.current.style.transform = 'translate(0,0)'; };
   return (
     <a ref={ref} href={href}
-      style={{ display: 'inline-flex', alignItems: 'center', gap: '.7rem', padding: '.85rem 2.2rem', background: primary ? '#00ff88' : 'transparent', color: primary ? '#050507' : '#e8e8f0', fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '.85rem', letterSpacing: '1px', textTransform: 'uppercase', border: primary ? 'none' : '1px solid rgba(255,255,255,0.14)', clipPath: primary ? 'polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))' : 'none', transition: 'opacity 0.2s, transform 0.3s cubic-bezier(.16,1,.3,1)', textDecoration: 'none' }}
+      style={{ display: 'inline-flex', alignItems: 'center', gap: '.7rem', padding: '.85rem 2rem', background: primary ? '#00ff88' : 'transparent', color: primary ? '#050507' : '#e8e8f0', fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '.82rem', letterSpacing: '1px', textTransform: 'uppercase', border: primary ? 'none' : '1px solid rgba(255,255,255,0.14)', clipPath: primary ? 'polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))' : 'none', transition: 'opacity 0.2s, transform 0.3s cubic-bezier(.16,1,.3,1)', textDecoration: 'none' }}
       onMouseMove={handleMove} onMouseLeave={handleLeave}
       onMouseEnter={e => { if (primary) e.currentTarget.style.opacity = '0.85'; }}
     >{children}</a>
