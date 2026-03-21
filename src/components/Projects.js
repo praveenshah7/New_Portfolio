@@ -42,23 +42,26 @@ function TiltCard({ proj }) {
     setTransform(`perspective(800px) rotateX(${(y - 0.5) * 10}deg) rotateY(${(x - 0.5) * -10}deg) scale3d(1.02,1.02,1.02)`);
     setGlowPos({ x: x * 100, y: y * 100 });
   };
-  const handleLeave = () => { setTransform('perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)'); setHovered(false); };
+  const handleLeave = () => {
+    setTransform('perspective(800px) rotateX(0) rotateY(0) scale3d(1,1,1)');
+    setHovered(false);
+  };
 
   return (
     <div ref={cardRef}
-      style={{ background: '#0d0d12', border: `1px solid ${hovered ? proj.color + '44' : 'rgba(255,255,255,0.07)'}`, padding: '2.5rem', position: 'relative', overflow: 'hidden', transition: 'border-color 0.3s', transform }}
+      style={{ background: '#0d0d12', border: `1px solid ${hovered ? proj.color + '44' : 'rgba(255,255,255,0.07)'}`, padding: '2rem', position: 'relative', overflow: 'hidden', transition: 'border-color 0.3s', transform }}
       onMouseMove={handleMove} onMouseLeave={handleLeave} onMouseEnter={() => setHovered(true)}
     >
-      {hovered && <div style={{ position: 'absolute', width: '300px', height: '300px', borderRadius: '50%', background: `radial-gradient(circle, ${proj.color}12 0%, transparent 70%)`, left: glowPos.x + '%', top: glowPos.y + '%', transform: 'translate(-50%,-50%)', pointerEvents: 'none' }} />}
+      {hovered && <div style={{ position: 'absolute', width: '250px', height: '250px', borderRadius: '50%', background: `radial-gradient(circle, ${proj.color}12 0%, transparent 70%)`, left: glowPos.x + '%', top: glowPos.y + '%', transform: 'translate(-50%,-50%)', pointerEvents: 'none' }} />}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: `linear-gradient(90deg, ${proj.color}, transparent)`, transform: hovered ? 'scaleX(1)' : 'scaleX(0)', transformOrigin: 'left', transition: 'transform 0.4s cubic-bezier(.16,1,.3,1)' }} />
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.2rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '.5rem' }}>
         <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.62rem', letterSpacing: '2px', color: 'rgba(255,255,255,0.2)' }}>Project {proj.num} — {proj.year}</span>
-        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', padding: '.2rem .6rem', border: `1px solid ${proj.color}44`, color: proj.color, letterSpacing: '1px' }}>Featured</span>
+        <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', padding: '.2rem .6rem', border: `1px solid ${proj.color}44`, color: proj.color, letterSpacing: '1px', whiteSpace: 'nowrap' }}>Featured</span>
       </div>
 
-      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '1.5rem', marginBottom: '.7rem', lineHeight: 1.1, color: '#e8e8f0' }}>{proj.title}</div>
-      <p style={{ color: '#6b6b80', fontSize: '.87rem', lineHeight: 1.75, marginBottom: '1rem' }}>{proj.desc}</p>
+      <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', marginBottom: '.7rem', lineHeight: 1.1, color: '#e8e8f0' }}>{proj.title}</div>
+      <p style={{ color: '#6b6b80', fontSize: '.85rem', lineHeight: 1.75, marginBottom: '1rem' }}>{proj.desc}</p>
 
       <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', padding: '.7rem 1rem', marginBottom: '1.2rem', borderLeft: `3px solid ${proj.color}` }}>
         <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.58rem', color: proj.color, letterSpacing: '2px', textTransform: 'uppercase', marginBottom: '.3rem' }}>What I learned</div>
@@ -71,7 +74,7 @@ function TiltCard({ proj }) {
         ))}
       </div>
 
-      <div style={{ display: 'flex', gap: '.8rem' }}>
+      <div style={{ display: 'flex', gap: '.8rem', flexWrap: 'wrap' }}>
         <a href={proj.github} target="_blank" rel="noreferrer"
           style={{ display: 'inline-flex', alignItems: 'center', gap: '.5rem', padding: '.55rem 1.1rem', border: '1px solid rgba(255,255,255,0.14)', fontFamily: "'Space Mono', monospace", fontSize: '.65rem', color: '#a0a0b8', letterSpacing: '1px', textDecoration: 'none', transition: 'border-color 0.2s, color 0.2s' }}
           onMouseEnter={e => { e.currentTarget.style.borderColor = '#00ff88'; e.currentTarget.style.color = '#00ff88'; }}
@@ -100,7 +103,7 @@ export default function Projects() {
         </div>
       </ScrollReveal>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
         {projects.map((proj, i) => (
           <ScrollReveal key={proj.num} delay={i * 150}>
             <TiltCard proj={proj} />
@@ -112,7 +115,7 @@ export default function Projects() {
         <ScrollReveal>
           <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '1.5rem' }}>Certifications</div>
         </ScrollReveal>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
           {certs.map((cert, i) => (
             <ScrollReveal key={cert.num} delay={i * 100}>
               <div style={{ border: '1px solid rgba(255,255,255,0.07)', padding: '1.5rem', position: 'relative', overflow: 'hidden', transition: 'border-color 0.2s' }}
@@ -121,8 +124,8 @@ export default function Projects() {
               >
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, #00ff88, transparent)' }} />
                 <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#00ff88', letterSpacing: '2px', marginBottom: '.5rem' }}>{cert.org} · {cert.year}</div>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#e8e8f0', marginBottom: '.3rem' }}>{cert.name}</div>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '.4rem', marginTop: '.5rem', padding: '.2rem .7rem', background: 'rgba(0,255,136,0.08)', border: '1px solid rgba(0,255,136,0.2)', borderRadius: '100px' }}>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '1rem', color: '#e8e8f0', marginBottom: '.5rem' }}>{cert.name}</div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '.4rem', padding: '.2rem .7rem', background: 'rgba(0,255,136,0.08)', border: '1px solid rgba(0,255,136,0.2)', borderRadius: '100px' }}>
                   <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#00ff88', display: 'inline-block' }} />
                   <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#00ff88' }}>Verified</span>
                 </div>
@@ -131,7 +134,12 @@ export default function Projects() {
           ))}
         </div>
       </div>
-      <style>{`@media(max-width:768px){#projects>div:nth-child(3){grid-template-columns:1fr!important} #projects{padding:4rem 1.5rem!important}}`}</style>
+
+      <style>{`
+        @media(max-width:768px){
+          #projects { padding: 4rem 1.5rem !important; }
+        }
+      `}</style>
     </section>
   );
 }
