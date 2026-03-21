@@ -146,10 +146,17 @@ export default function Hero() {
       </div>
 
       <style>{`
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-        @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
-        @media(max-width:768px){ #hero{padding:0 1.5rem !important;} }
-      `}</style>
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+  @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+  @media(max-width:900px){
+    #hero { padding: 5rem 1.5rem 3rem !important; }
+    #hero > div:nth-child(3) { grid-template-columns: 1fr !important; flex-direction: column !important; }
+    #hero > div:nth-child(3) > div:last-child { display: none !important; }
+  }
+  @media(max-width:768px){
+    #hero h1 { font-size: 4rem !important; }
+  }
+`}</style>
     </section>
   );
 }

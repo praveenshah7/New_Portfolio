@@ -85,7 +85,13 @@ export default function About() {
           >↓ Download Resume</a>
         </div>
       </div>
-      <style>{`@keyframes blink{0%,100%{opacity:1}50%{opacity:0}} @media(max-width:900px){#about>div:last-child{grid-template-columns:1fr!important}} @media(max-width:768px){#about{padding:4rem 1.5rem!important}}`}</style>
+      <style>{`
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+  @media(max-width:900px){
+    #about { padding: 4rem 1.5rem !important; }
+    #about > div:last-child { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  }
+`}</style>
     </section>
   );
 }

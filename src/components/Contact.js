@@ -75,10 +75,13 @@ export default function Contact() {
       </div>
 
       <style>{`
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
-        @media(max-width:900px){ #contact > div:last-child { grid-template-columns: 1fr !important; } }
-        @media(max-width:768px){ #contact { padding: 4rem 1.5rem !important; } }
-      `}</style>
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+  @media(max-width:900px){
+    #contact { padding: 4rem 1.5rem !important; }
+    #contact > div:last-child { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    #contact > div:first-child { font-size: clamp(2rem,8vw,4rem) !important; }
+  }
+`}</style>
     </section>
   );
 }

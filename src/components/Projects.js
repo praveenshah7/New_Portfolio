@@ -85,7 +85,13 @@ export default function Projects() {
           ))}
         </div>
       </div>
-      <style>{`@media(max-width:768px){#projects>div:nth-child(3){grid-template-columns:1fr!important} #projects{padding:4rem 1.5rem!important}}`}</style>
+      <style>{`
+  @media(max-width:768px){
+    #projects { padding: 4rem 1.5rem !important; }
+    #projects > div:nth-child(3) { grid-template-columns: 1fr !important; }
+    #projects > div:last-child > div:last-child { grid-template-columns: 1fr !important; }
+  }
+`}</style>
     </section>
   );
 }

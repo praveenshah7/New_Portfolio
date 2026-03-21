@@ -64,7 +64,12 @@ export default function Skills() {
           </ScrollReveal>
         ))}
       </div>
-      <style>{`@media(max-width:768px){#skills>div:last-child{grid-template-columns:1fr!important} #skills{padding:4rem 1.5rem!important}}`}</style>
+      <style>{`
+  @media(max-width:768px){
+    #skills { padding: 4rem 1.5rem !important; }
+    #skills > div:last-child { grid-template-columns: 1fr !important; }
+  }
+`}</style>
     </section>
   );
 }
