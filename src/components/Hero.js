@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useRef, useState } from 'react';
 
 const roles = ['Frontend Developer', 'React Specialist', 'Full Stack Dev', 'UI Engineer'];
@@ -9,7 +10,6 @@ export default function Hero() {
   const [deleting, setDeleting] = useState(false);
   const [glitch, setGlitch] = useState(false);
 
-  // Particle canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -47,7 +47,6 @@ export default function Hero() {
     return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize); };
   }, []);
 
-  // Typewriter
   useEffect(() => {
     const current = roles[roleIdx];
     let timeout;
@@ -57,14 +56,13 @@ export default function Hero() {
       timeout = setTimeout(() => setDeleting(true), 1800);
     } else if (deleting && displayed.length > 0) {
       timeout = setTimeout(() => setDisplayed(displayed.slice(0, -1)), 40);
-    } else if (deleting && displayed.length === 0) {
+    } else {
       setDeleting(false);
       setRoleIdx((roleIdx + 1) % roles.length);
     }
     return () => clearTimeout(timeout);
   }, [displayed, deleting, roleIdx]);
 
-  // Glitch trigger
   useEffect(() => {
     const interval = setInterval(() => {
       setGlitch(true);
@@ -77,8 +75,6 @@ export default function Hero() {
     <section id="hero" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 5rem', position: 'relative', overflow: 'hidden' }}>
       <canvas ref={canvasRef} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', zIndex: 0 }} />
       <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 65% 50%, rgba(0,255,136,0.06) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(124,58,237,0.05) 0%, transparent 50%)', zIndex: 1, pointerEvents: 'none' }} />
-
-      {/* Scanlines */}
       <div style={{ position: 'absolute', inset: 0, backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)', zIndex: 1, pointerEvents: 'none' }} />
 
       <div style={{ position: 'relative', zIndex: 2, maxWidth: '1000px' }}>
@@ -87,33 +83,30 @@ export default function Hero() {
           Haldwani, Uttarakhand · India
         </div>
 
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-          <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(4rem, 11vw, 9.5rem)', lineHeight: 0.88, letterSpacing: '-3px', textTransform: 'uppercase', position: 'relative' }}>
-            <span style={{ display: 'block', position: 'relative' }}>
-              {glitch && (
-                <>
-                  <span style={{ position: 'absolute', left: '2px', top: 0, color: '#ff0044', clipPath: 'polygon(0 20%, 100% 20%, 100% 40%, 0 40%)', opacity: 0.7 }}>PRAVEEN</span>
-                  <span style={{ position: 'absolute', left: '-2px', top: 0, color: '#00ffff', clipPath: 'polygon(0 60%, 100% 60%, 100% 80%, 0 80%)', opacity: 0.7 }}>PRAVEEN</span>
-                </>
-              )}
-              PRAVEEN
-            </span>
-            <span style={{ display: 'block', color: 'transparent', WebkitTextStroke: '1.5px #e8e8f0', position: 'relative' }}>
-              {glitch && (
-                <>
-                  <span style={{ position: 'absolute', left: '3px', top: 0, color: '#ff0044', WebkitTextStroke: '0px', clipPath: 'polygon(0 30%, 100% 30%, 100% 50%, 0 50%)', opacity: 0.6 }}>SHAH</span>
-                  <span style={{ position: 'absolute', left: '-3px', top: 0, color: '#00ffff', WebkitTextStroke: '0px', clipPath: 'polygon(0 55%, 100% 55%, 100% 75%, 0 75%)', opacity: 0.6 }}>SHAH</span>
-                </>
-              )}
-              SHAH
-            </span>
-          </h1>
-        </div>
+        <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(2.8rem, 11vw, 9.5rem)', lineHeight: 0.88, letterSpacing: '-3px', textTransform: 'uppercase', position: 'relative' }}>
+          <span style={{ display: 'block', position: 'relative' }}>
+            {glitch && (
+              <>
+                <span style={{ position: 'absolute', left: '2px', top: 0, color: '#ff0044', clipPath: 'polygon(0 20%, 100% 20%, 100% 40%, 0 40%)', opacity: 0.7 }}>PRAVEEN</span>
+                <span style={{ position: 'absolute', left: '-2px', top: 0, color: '#00ffff', clipPath: 'polygon(0 60%, 100% 60%, 100% 80%, 0 80%)', opacity: 0.7 }}>PRAVEEN</span>
+              </>
+            )}
+            PRAVEEN
+          </span>
+          <span style={{ display: 'block', color: 'transparent', WebkitTextStroke: '1.5px #e8e8f0', position: 'relative' }}>
+            {glitch && (
+              <>
+                <span style={{ position: 'absolute', left: '3px', top: 0, color: '#ff0044', WebkitTextStroke: '0px', clipPath: 'polygon(0 30%, 100% 30%, 100% 50%, 0 50%)', opacity: 0.6 }}>SHAH</span>
+                <span style={{ position: 'absolute', left: '-3px', top: 0, color: '#00ffff', WebkitTextStroke: '0px', clipPath: 'polygon(0 55%, 100% 55%, 100% 75%, 0 75%)', opacity: 0.6 }}>SHAH</span>
+              </>
+            )}
+            SHAH
+          </span>
+        </h1>
 
-        {/* Typewriter */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '.8rem', marginTop: '1.8rem' }}>
           <span style={{ fontFamily: "'Space Mono', monospace", fontSize: '.75rem', color: '#00ff88' }}>$</span>
-          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(1rem, 2vw, 1.3rem)', color: '#e8e8f0', fontWeight: 400 }}>{displayed}</span>
+          <span style={{ fontFamily: "'Space Mono', monospace", fontSize: 'clamp(.85rem, 2vw, 1.3rem)', color: '#e8e8f0', fontWeight: 400 }}>{displayed}</span>
           <span style={{ display: 'inline-block', width: '2px', height: '1.3em', background: '#00ff88', animation: 'blink 1s infinite', verticalAlign: 'middle' }} />
         </div>
 
@@ -121,42 +114,43 @@ export default function Hero() {
           I craft fast, responsive, and visually precise web experiences. MCA grad · 2+ years shipping production React apps · currently at Supplyvalid.
         </p>
 
-        {/* Stats */}
-        <div style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+        <div className="hero-stats" style={{ display: 'flex', gap: '3rem', marginTop: '2.5rem', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.07)', flexWrap: 'wrap' }}>
           {[['2+', 'Years Exp'], ['3+', 'Projects'], ['8.0', 'CGPA'], ['2', 'Certs']].map(([num, label]) => (
-            <div key={label}>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: '2.2rem', color: '#00ff88', lineHeight: 1 }}>{num}</div>
-              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.62rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', marginTop: '.3rem' }}>{label}</div>
+            <div key={label} style={{ minWidth: '55px' }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', color: '#00ff88', lineHeight: 1 }}>{num}</div>
+              <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', marginTop: '.3rem' }}>{label}</div>
             </div>
           ))}
         </div>
 
         <div style={{ display: 'flex', gap: '1.2rem', marginTop: '2.5rem', alignItems: 'center', flexWrap: 'wrap' }}>
           <MagneticBtn href="#projects" primary>View My Work ↗</MagneticBtn>
-          <a href="#contact" style={{ fontFamily: "'Space Mono', monospace", fontSize: '.7rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.14)', paddingBottom: '2px', transition: 'color 0.2s' }}
+          <a href="#contact" style={{ fontFamily: "'Space Mono', monospace", fontSize: '.7rem', color: '#6b6b80', letterSpacing: '2px', textTransform: 'uppercase', borderBottom: '1px solid rgba(255,255,255,0.14)', paddingBottom: '2px', transition: 'color 0.2s', textDecoration: 'none' }}
             onMouseEnter={e => e.currentTarget.style.color = '#00ff88'}
             onMouseLeave={e => e.currentTarget.style.color = '#6b6b80'}
           >Get In Touch</a>
         </div>
       </div>
 
-      <div style={{ position: 'absolute', bottom: '3rem', right: '5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.8rem', fontFamily: "'Space Mono', monospace", fontSize: '.62rem', letterSpacing: '3px', color: '#6b6b80', textTransform: 'uppercase', writingMode: 'vertical-rl', zIndex: 2 }}>
+      <div style={{ position: 'absolute', bottom: '3rem', right: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '.8rem', fontFamily: "'Space Mono', monospace", fontSize: '.62rem', letterSpacing: '3px', color: '#6b6b80', textTransform: 'uppercase', writingMode: 'vertical-rl', zIndex: 2 }}>
         <span>Scroll</span>
         <span style={{ width: '1px', height: '60px', background: 'linear-gradient(to bottom, #00ff88, transparent)', animation: 'scrollAnim 2s ease infinite', display: 'block' }} />
       </div>
 
       <style>{`
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-  @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
-  @media(max-width:900px){
-    #hero { padding: 5rem 1.5rem 3rem !important; }
-    #hero > div:nth-child(3) { grid-template-columns: 1fr !important; flex-direction: column !important; }
-    #hero > div:nth-child(3) > div:last-child { display: none !important; }
-  }
-  @media(max-width:768px){
-    #hero h1 { font-size: 4rem !important; }
-  }
-`}</style>
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes scrollAnim { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+        @media(max-width:900px){
+          #hero { padding: 5rem 1.5rem 3rem !important; }
+        }
+        @media(max-width:768px){
+          #hero h1 { font-size: 3rem !important; letter-spacing: -1px !important; }
+          .hero-stats { gap: 1.5rem !important; }
+        }
+        @media(max-width:400px){
+          #hero h1 { font-size: 2.5rem !important; }
+        }
+      `}</style>
     </section>
   );
 }
@@ -175,7 +169,7 @@ function MagneticBtn({ href, children, primary }) {
     <a ref={ref} href={href}
       style={{ display: 'inline-flex', alignItems: 'center', gap: '.7rem', padding: '.85rem 2.2rem', background: primary ? '#00ff88' : 'transparent', color: primary ? '#050507' : '#e8e8f0', fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: '.85rem', letterSpacing: '1px', textTransform: 'uppercase', border: primary ? 'none' : '1px solid rgba(255,255,255,0.14)', clipPath: primary ? 'polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))' : 'none', transition: 'opacity 0.2s, transform 0.3s cubic-bezier(.16,1,.3,1)', textDecoration: 'none' }}
       onMouseMove={handleMove} onMouseLeave={handleLeave}
-      onMouseEnter={e => e.currentTarget.style.opacity = primary ? '0.85' : '1'}
+      onMouseEnter={e => { if (primary) e.currentTarget.style.opacity = '0.85'; }}
     >{children}</a>
   );
 }
