@@ -33,7 +33,7 @@ export default function About() {
 
   return (
     <section id="about" ref={sectionRef} style={{ padding: '7rem 5rem', background: '#0d0d12' }}>
-      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '.5rem' }}>// 01</div>
+      <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.65rem', letterSpacing: '3px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '.5rem' }}>{/* 01 */}</div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '3.5rem' }}>
         <h2 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem,4vw,3.5rem)', textTransform: 'uppercase', letterSpacing: '-1px' }}>About Me</h2>
         <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.07)' }} />
