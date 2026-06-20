@@ -4,12 +4,12 @@ import ScrollReveal from './ScrollReveal';
 
 const projects = [
   {
-    num: '01', year: '2024', title: 'Moweb',
-    desc: 'A dynamic movie web app with comprehensive info — plot summaries, cast, ratings, trailers, and reviews. Fully responsive across all devices.',
-    tags: ['React JS', 'Tailwind CSS', 'Node JS'],
-    github: 'https://github.com/praveenshah7',
-    live: null,
-    learned: 'API integration, state management, responsive design',
+    num: '01', year: '2025', title: 'Job Application Tracker',
+    desc: 'Full-stack app to track job applications with Kanban board, analytics dashboard, and an AI-powered cover letter generator using LLaMA 3.1 via Groq API.',
+    tags: ['React JS', 'Node.js', 'MongoDB', 'JWT', 'Groq AI'],
+    github: 'https://github.com/praveenshah7/Job-Application-Tracker-',
+    live: 'https://your-job-tracker-live-url.vercel.app',
+    learned: 'Full stack architecture, JWT auth, AI API integration, MongoDB schema design',
     color: '#00ff88',
   },
   {
