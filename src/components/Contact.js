@@ -12,12 +12,13 @@ export default function Contact() {
     <section id="contact" style={{ padding: '7rem 5rem', background: '#0d0d12', overflow: 'hidden' }}>
       <div className="contact-heading" style={{
         fontFamily: "'Syne', sans-serif", fontWeight: 800,
-        fontSize: 'clamp(2.2rem,8vw,7rem)', textTransform: 'uppercase',
+        fontSize: 'clamp(1.8rem,7vw,7rem)', textTransform: 'uppercase',
         letterSpacing: '-2px', lineHeight: 0.95,
-        background: 'linear-gradient(135deg, rgba(0,255,136,0.5), rgba(124,58,237,0.5))',
+        background: 'linear-gradient(90deg, #00ff88, #7c3aed, #ff0044, #00ff88)',
+        backgroundSize: '300% 100%',
         WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
         backgroundClip: 'text',
-        WebkitTextStroke: '1.5px rgba(0,255,136,0.4)',
+        animation: 'gradientMove 6s linear infinite',
         marginBottom: '3rem', userSelect: 'none', wordBreak: 'break-word',
       }}>
         Let's Work Together
@@ -80,12 +81,19 @@ export default function Contact() {
 
       <style>{`
         @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+        @keyframes gradientMove {
+          0% { background-position: 0% 50%; }
+          100% { background-position: 300% 50%; }
+        }
         @media(max-width:900px){
           #contact { padding: 4rem 1.5rem !important; }
           .contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
         }
         @media(max-width:480px){
-          .contact-heading { -webkit-text-stroke: 1px rgba(0,255,136,0.4) !important; }
+          .contact-heading {
+            font-size: 2.2rem !important;
+            letter-spacing: -1px !important;
+          }
         }
       `}</style>
     </section>
