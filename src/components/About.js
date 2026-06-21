@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 const terminalLines = [
   { cmd: 'whoami', out: 'praveen_shah' },
   { cmd: 'cat location.txt', out: 'Haldwani, Uttarakhand, India' },
-  { cmd: 'cat education.txt', out: 'MCA @ Graphic Era Hill University (8.0 CGPA)\nBCA @ MAGU University, Pauri Garhwal' },
+  { cmd: 'cat education.txt', out: 'MCA @ Graphic Era Hill University (8.0 CGPA)\nBCA @ MAHGU University, Pauri Garhwal' },
   { cmd: 'cat status.txt', out: 'Open to Work — Frontend / Full Stack' },
   { cmd: 'cat focus.txt', out: 'React · Node.js · Python · UI Engineering' },
 ];
