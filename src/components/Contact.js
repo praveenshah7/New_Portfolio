@@ -10,17 +10,20 @@ const links = [
 export default function Contact() {
   return (
     <section id="contact" style={{ padding: '7rem 5rem', background: '#0d0d12', overflow: 'hidden' }}>
-      <div style={{
+      <div className="contact-heading" style={{
         fontFamily: "'Syne', sans-serif", fontWeight: 800,
-        fontSize: 'clamp(3rem,8vw,7rem)', textTransform: 'uppercase',
-        letterSpacing: '-2px', lineHeight: 0.9,
-        color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.07)',
-        marginBottom: '3rem', userSelect: 'none',
+        fontSize: 'clamp(2.2rem,8vw,7rem)', textTransform: 'uppercase',
+        letterSpacing: '-2px', lineHeight: 0.95,
+        background: 'linear-gradient(135deg, rgba(0,255,136,0.5), rgba(124,58,237,0.5))',
+        WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text',
+        WebkitTextStroke: '1.5px rgba(0,255,136,0.4)',
+        marginBottom: '3rem', userSelect: 'none', wordBreak: 'break-word',
       }}>
         Let's Work Together
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'start' }}>
+      <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'start' }}>
         <div>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '.6rem', padding: '.5rem 1.2rem', border: '1px solid rgba(0,255,136,0.3)', fontFamily: "'Space Mono', monospace", fontSize: '.68rem', letterSpacing: '2px', color: '#00ff88', textTransform: 'uppercase', marginBottom: '2rem' }}>
             <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#00ff88', display: 'inline-block', animation: 'blink 1.5s infinite' }} />
@@ -38,15 +41,16 @@ export default function Contact() {
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   padding: '1.1rem 1.4rem', border: '1px solid rgba(255,255,255,0.07)',
                   textDecoration: 'none', color: '#e8e8f0', transition: 'border-color 0.2s, background 0.2s',
+                  flexWrap: 'wrap', gap: '.5rem',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(0,255,136,0.4)'; e.currentTarget.style.background = 'rgba(0,255,136,0.03)'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.07)'; e.currentTarget.style.background = 'transparent'; }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.14)', fontFamily: "'Space Mono', monospace", fontSize: '.7rem', color: '#00ff88' }}>{link.icon}</div>
+                  <div style={{ width: '32px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(255,255,255,0.14)', fontFamily: "'Space Mono', monospace", fontSize: '.7rem', color: '#00ff88', flexShrink: 0 }}>{link.icon}</div>
                   <div>
                     <div style={{ fontFamily: "'Space Mono', monospace", fontSize: '.6rem', letterSpacing: '2px', color: '#6b6b80', textTransform: 'uppercase', marginBottom: '.2rem' }}>{link.label}</div>
-                    <div style={{ fontSize: '.85rem', fontWeight: 500 }}>{link.val}</div>
+                    <div style={{ fontSize: '.85rem', fontWeight: 500, wordBreak: 'break-word' }}>{link.val}</div>
                   </div>
                 </div>
                 <span style={{ color: '#6b6b80', fontSize: '.8rem' }}>↗</span>
@@ -75,13 +79,15 @@ export default function Contact() {
       </div>
 
       <style>{`
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
-  @media(max-width:900px){
-    #contact { padding: 4rem 1.5rem !important; }
-    #contact > div:last-child { grid-template-columns: 1fr !important; gap: 2rem !important; }
-    #contact > div:first-child { font-size: clamp(2rem,8vw,4rem) !important; }
-  }
-`}</style>
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+        @media(max-width:900px){
+          #contact { padding: 4rem 1.5rem !important; }
+          .contact-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+        }
+        @media(max-width:480px){
+          .contact-heading { -webkit-text-stroke: 1px rgba(0,255,136,0.4) !important; }
+        }
+      `}</style>
     </section>
   );
 }
